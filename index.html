@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Membros - Jornal Escolar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Jornal Escolar</h1>
+        <nav>
+            <a href="#">Login</a>
+            <a href="#">Cadastro</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="login-section">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="E-mail" required>
+                <input type="password" id="login-password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+
+        <section id="signup-section">
+            <h2>Criar Usuário (Admin apenas)</h2>
+            <form id="signup-form">
+                <input type="email" id="signup-email" placeholder="E-mail" required>
+                <input type="password" id="signup-password" placeholder="Senha" required>
+                <button type="submit">Criar</button>
+            </form>
+        </section>
+
+        <section id="upload-section">
+            <h2>Enviar Arquivo</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" id="file-input" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
