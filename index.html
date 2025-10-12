@@ -1,48 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área de Membros - Jornal Escolar</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vozes da Escola — Área de Membros</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Jornal Escolar</h1>
-        <nav>
-            <a href="#">Login</a>
-            <a href="#">Cadastro</a>
-        </nav>
-    </header>
+<header>
+  <h1>Vozes da Escola — Área de Membros</h1>
+  <div style="margin-left:auto" id="topControls"></div>
+</header>
 
-    <main>
-        <section id="login-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <input type="email" id="login-email" placeholder="E-mail" required>
-                <input type="password" id="login-password" placeholder="Senha" required>
-                <button type="submit">Entrar</button>
-            </form>
-        </section>
+<div class="container">
+  <nav>
+    <div class="user" id="userPreview">
+      <img src="https://picsum.photos/seed/default/200/200" alt="avatar" id="userAvatar"/>
+      <div>
+        <div id="userName">Convidado</div>
+        <div class="small" id="userRole">Não autenticado</div>
+      </div>
+    </div>
 
-        <section id="signup-section">
-            <h2>Criar Usuário (Admin apenas)</h2>
-            <form id="signup-form">
-                <input type="email" id="signup-email" placeholder="E-mail" required>
-                <input type="password" id="signup-password" placeholder="Senha" required>
-                <button type="submit">Criar</button>
-            </form>
-        </section>
+    <div class="menu card" style="margin-top:12px">
+      <button onclick="showSection('dashboard')">Dashboard</button>
+      <button onclick="showSection('pauta')">Pauta</button>
+      <button onclick="showSection('kanban')">Kanban</button>
+      <button onclick="showSection('submissoes')">Submissões</button>
+      <button onclick="showSection('arquivos')">Arquivos</button>
+      <button onclick="showSection('forum')">Fórum</button>
+      <hr/>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn" id="btnLogin" onclick="openLogin()">Entrar</button>
+        <button class="linklike" onclick="logout()">Sair</button>
+      </div>
+    </div>
+  </nav>
 
-        <section id="upload-section">
-            <h2>Enviar Arquivo</h2>
-            <form id="upload-form" enctype="multipart/form-data">
-                <input type="file" id="file-input" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </main>
+  <main>
+    <section id="dashboard" class="card">Bem-vindo à área de membros.</section>
 
-    <script src="js/script.js"></script>
+    <section id="pauta" class="card" style="display:none">
+      <h3>Pauta</h3>
+      <input id="pautaTitle" placeholder="Título"/> 
+      <input type="date" id="pautaDate"/>
+      <button class="btn" onclick="addPauta()">Adicionar</button>
+      <div id="pautaList"></div>
+    </section>
+
+    <section id="kanban" class="card" style="display:none">
+      <h3>Kanban</h3>
+      <input id="taskTitle" placeholder="Nova tarefa"/> 
+      <select id="taskStatus"><option>todo</option><option>doing</option><option>done</option></select>
+      <button class="btn" onclick="addTask()">Adicionar</button>
+      <div id="taskList"></div>
+    </section>
+
+    <section id="submissoes" class="card" style="display:none">
+      <h3>Submissões</h3>
+      <input id="subTitle" placeholder="Título da submissão"/> 
+      <button class="btn" onclick="addSub()">Enviar</button>
+      <div id="subList"></div>
+    </section>
+
+    <section id="arquivos" class="card" style="display:none">
+      <h3>Arquivos</h3>
+      <div id="fileList"></div>
+    </section>
+
+    <section id="forum" class="card" style="display:none">
+      <h3>Fórum</h3>
+      <textarea id="forumMsg" placeholder="Mensagem..."></textarea>
+      <button class="btn" onclick="addForum()">Postar</button>
+      <div id="forumList"></div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  Criado para o Jornal <strong>Vozes da Escola</strong>.
+</footer>
+
+<script src="js/script.js"></script>
+
+<!-- Modal login -->
+<div id="loginModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center">
+  <div style="background:#04111a;padding:18px;border-radius:12px;width:340px">
+    <h3>Entrar</h3>
+    <input id="loginEmail" placeholder="email" style="width:100%;margin-bottom:8px"/>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button onclick="closeLogin()" class="linklike">Cancelar</button>
+      <button class="btn" onclick="doLogin()">Entrar</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
